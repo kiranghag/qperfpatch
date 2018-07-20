@@ -1,0 +1,25 @@
+--- collect.bak	2018-07-20 12:46:35.033309330 +0530
++++ collect	2018-07-20 15:34:08.852354334 +0530
+@@ -380,11 +380,21 @@
+ 	((mins=mins-hrs*60))
+ fi
+ if [ "$iter" -ne "0" -a $curr -gt $end ]; then
++	# PATCH BEGIN ####################################
+ 	echo "all iterations done."
+ 	echo "all files have been stored in $odir."
+-	echo "exiting."
++	#echo "exiting."
+ 	$sssh $sstr "svctask startstats -interval $oint"
++        echo "processing CSV files in $odir."
++	echo $odir
++	cd ..
++	./all $odir
++	echo "compressing stats files in $odir."
++	tar cvf $odir.tar $odir/* --remove-files
++	gzip $odir.tar
++	echo "exiting."
+ 	exit 0
++	# PATCH END ######################################
+ fi
+ echo "waiting for next interval (ran ${hrs}:${mins}). press ctrl-c to quit..."
+ sleep $intvs
