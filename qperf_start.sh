@@ -10,14 +10,14 @@
 # It can be downloaded from https://www-03.ibm.com/support/techdocs/atsmastr.nsf/WebIndex/TD105947 
 # 
 # Author: Kiran Ghag, qperf@kiranghag.com
-# Version: v0.1 20180723
+# Version: v0.2 20180723
 
 # update this if qperf is installed in a different directory
 qperf_dir="/root/qperf"
 # interval between two samples
 interval=1
 # number of iterations
-iterations=2
+iterations=120
 
 cd $qperf_dir
 ./collect $interval $iterations >> qperf_start.log 2>&1
