@@ -10,7 +10,7 @@
 -	echo "exiting."
 +	#echo "exiting."
  	$sssh $sstr "svctask startstats -interval $oint"
-+        echo "processing CSV files in $odir."
++        echo "processing TXT files in $odir."
 +	echo $odir
 +	cd ..
 +	./all $odir
